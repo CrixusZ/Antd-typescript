@@ -29,3 +29,20 @@ function echoWithLength<T extends IWithLength>(arg:T): T {
 const str1 = echoWithLength('str')
 const obj = echoWithLength({length:10})
 const arr2 = echoWithLength([1,2,3])
+
+// 泛型在队列中的应用
+class Queue {
+  private data = []
+  push(item) {
+    return this.data.push(item)
+  }
+  pop(){
+    return this.data.shift()
+  }
+}
+
+const queue = new Queue()
+queue.push(1)
+queue.push('str')
+console.log(queue.pop().toFixed(2))
+// console.log(queue.pop().toFixed())
