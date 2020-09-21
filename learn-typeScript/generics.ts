@@ -31,18 +31,48 @@ const obj = echoWithLength({length:10})
 const arr2 = echoWithLength([1,2,3])
 
 // 泛型在队列中的应用
-class Queue {
+class Queue<T> {
   private data = []
-  push(item) {
+  push(item: T) {
     return this.data.push(item)
   }
-  pop(){
+  pop(): T{
     return this.data.shift()
   }
 }
 
-const queue = new Queue()
+const queue = new Queue<number>()
 queue.push(1)
-queue.push('str')
-console.log(queue.pop().toFixed(2))
-// console.log(queue.pop().toFixed())
+// queue.push('str')
+console.log(queue.pop().toFixed(1))
+
+const queue2 = new Queue<string>()
+queue2.push('str')
+console.log(queue2.pop().length)
+
+interface KeyPair<T,U>{
+  key: T;
+  value: U
+}
+let kp1: KeyPair<number, string>={
+  key:124,value:'str'
+}
+
+let kp2: KeyPair<string, number>={
+  key:'124',value:344
+}
+
+let arr:number[] = [1,2.3,4]
+let arrTow: Array<number> = [1,2.3,4]
+
+interface IPlus<T> {
+  (a: T,b:T):T
+}
+function plus(a:number,b:number):number{
+  return a+b
+}
+function connect(a:string,b:string):string{
+  return a+b
+}
+const a: IPlus<number> = plus
+const b: IPlus<string> = connect
