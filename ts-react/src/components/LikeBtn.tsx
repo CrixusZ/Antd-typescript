@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
+// useState 改变函数内组件的状态，并且每次组件更新记录的状态值
 const LikeBtn: React.FC = () => {
   const [obj, setObj] = useState({like:0, on:true})
+  useEffect(() => {
+    document.title = `点击了${obj.like}次`
+  },[obj])
   return (
     <>
       <button onClick={() => {setObj({
