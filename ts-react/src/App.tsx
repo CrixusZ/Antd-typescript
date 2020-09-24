@@ -1,28 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import Hello from './components/Hello'
 import LikeBtn from './components/LikeBtn'
-
+import MouseTracker from './components/MouseTracker'
+import useMousePosition from './hooks/useMousePosition'
 import './App.css';
 
-function App() {
+const App: React.FC =() => {
+  const [ show, setShow ] = useState(true)
+  const position = useMousePosition()
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <button onClick={()=>{setShow(!show)}}>tracker</button>
+        <p>x: {position.x}, y: {position.y}</p>
         <Hello message={"3231"}></Hello>
         <LikeBtn></LikeBtn>
-        <a
+        { show && <MouseTracker/> }
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
