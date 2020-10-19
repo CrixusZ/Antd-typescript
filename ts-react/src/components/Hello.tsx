@@ -6,7 +6,8 @@ interface IHelloProps {
 // const Hello = (props:IHelloProps)=>{
 //   return <h2>{props.message}</h2>
 // }
-const Hello: React.FunctionComponent<IHelloProps> = (props) => {
+const Hello: React.FC<IHelloProps> = (props) => {
+  // const Hello: React.FunctionComponent<IHelloProps> = (props) => {
   // props.children
   return <h2>{props.message}</h2>
 }
