@@ -42,3 +42,4 @@ const withLoader = <P extends ILoaderState>(WrappedComponent: React.ComponentTyp
     }
   }
 }
+export default withLoader;

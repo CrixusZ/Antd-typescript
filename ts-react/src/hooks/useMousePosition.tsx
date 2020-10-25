@@ -8,13 +8,13 @@ const useMousePosition = () => {
       console.log('inner')
       setPosition({x:e.clientX, y:e.clientY})
     }
-    document.addEventListener('mousemove', updateMouse)
+    document.addEventListener('click', updateMouse)
     return () => {
       console.log('remove effect', position.x)
       document.removeEventListener('mousemove', updateMouse)
     }
   }, [])
-  console.log('before render',position.x)
+  // console.log('before render',position.x)
   return position
 }
 
